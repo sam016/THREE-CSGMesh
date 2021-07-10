@@ -1,7 +1,7 @@
-import * as THREE from "../lib/three.module.js"
+import * as THREE from "three";
 
 function reindexBufferGeometry(bufferGeometry,options){
-    let nonIndexed = bufferGeometry.index ? bufferGeometry.toNonIndexed() : bufferGeometry   
+    let nonIndexed = bufferGeometry.index ? bufferGeometry.toNonIndexed() : bufferGeometry
     let attribs = nonIndexed.attributes
     let extractVertex = (index) =>{
         let out={}

@@ -1,6 +1,6 @@
 "use strict"
 
-import*as THREE from "../lib/three.module.js";
+import * as THREE from "three";
 let { BufferGeometry, Vector3, Vector2} = THREE;
 
 

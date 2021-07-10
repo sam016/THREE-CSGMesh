@@ -1,7 +1,8 @@
-import*as THREE from "../lib/three.module.js";
+import * as THREE from "three";
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js"
+import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader.js"
+import FontHelvetikerTypefaceJson from 'three/examples/fonts/helvetiker_regular.typeface.json';
 import CSG from "../src/three-csg.js";
-import {GLTFLoader} from "../lib/jsm/GLTFLoader.js"
-import {DRACOLoader} from "../lib/jsm/DRACOLoader.js"
 
 let glbLoader = new GLTFLoader()
 const dracoLoader = new DRACOLoader();
@@ -28,7 +29,7 @@ let backMaterial = new THREE.MeshStandardMaterial({
     side: THREE.BackSide,
     depthWrite: false
 });
-import {BufferGeometry, Float32BufferAttribute, Geometry} from '../lib/three.module.js';
+import {BufferGeometry, Float32BufferAttribute, Geometry} from 'three';
 
 class FNode {
 
@@ -80,7 +81,7 @@ class Prims {
         return m;
     }
     static empty(e, material) {
-        return this.mesh(e, new THREE.Geometry(), material);
+        return this.mesh(e, new THREE.BufferGeometry(), material);
     }
     static sphere(e, material) {
         return this.mesh(e, new THREE.SphereGeometry(0.5,16,16), material);
@@ -285,7 +286,7 @@ class FCAD {
         localStorage.csgscene = JSON.stringify(this.toJSON());
 
         const loader = new THREE.FontLoader();
-        loader.load('../lib/helvetiker_regular.typeface.json', function(font) {
+        loader.parse(FontHelvetikerTypefaceJson, function(font) {
             let genText = (str)=>{
                 const geometry = new THREE.TextBufferGeometry(str,{
                     font: font,

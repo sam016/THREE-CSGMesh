@@ -1,4 +1,4 @@
-import * as THREE from "../lib/three.module.js";
+import * as THREE from "three";
 let vs = `
 varying vec3 vertex;
   void main() {
@@ -68,7 +68,7 @@ diffuseColor.a`)
     })
   }
   static makeGrid(material){
-    
+
 
 let grid = new THREE.Mesh(
   new THREE.PlaneGeometry(20.00, 20.00),

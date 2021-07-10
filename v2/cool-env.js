@@ -1,24 +1,25 @@
-import*as THREE from "../lib/three.module.js";
+import * as THREE from "three";
 //import { CSS3DRenderer } from "../../../three.js-dev/examples/jsm/renderers/CSS3DRenderer.js";
 
-import {HDRCubeTextureLoader} from "../lib/jsm/HDRCubeTextureLoader.js";
-import {RGBELoader} from "../lib/jsm/RGBELoader.js";
-import {RoughnessMipmapper} from '../lib/jsm/RoughnessMipmapper.js';
+import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
+import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader.js";
+
+import {RoughnessMipmapper} from 'three/examples/jsm/utils/RoughnessMipmapper.js';
 //import {PMREMGenerator} from "../three.js-dev/examples/jsm/pmrem/PMREMGenerator.js";
 //import {PMREMCubeUVPacker} from "../three.js-dev/examples/jsm/pmrem/PMREMCubeUVPacker.js";
 
-import {EffectComposer} from "../lib/jsm/postprocessing/EffectComposer.js";
-import {RenderPass} from "../lib/jsm/postprocessing/RenderPass.js";
-import {ShaderPass} from "../lib/jsm/postprocessing/ShaderPass.js";
-import {CopyShader} from "../lib/jsm/shaders/CopyShader.js";
-import {LuminosityHighPassShader} from "../lib/jsm/shaders/LuminosityHighPassShader.js";
-import {UnrealBloomPass} from "../lib/jsm/postprocessing/UnrealBloomPass.js";
-import {FXAAShader} from "../lib/jsm/shaders/FXAAShader.js";
+import {EffectComposer} from "three/examples/jsm/postprocessing/EffectComposer.js";
+import {RenderPass} from "three/examples/jsm/postprocessing/RenderPass.js";
+import {ShaderPass} from "three/examples/jsm/postprocessing/ShaderPass.js";
+import {UnrealBloomPass} from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import {SSAOPass} from "three/examples/jsm/postprocessing/SSAOPass.js";
+import {CopyShader} from "three/examples/jsm/shaders/CopyShader.js";
+import {LuminosityHighPassShader} from "three/examples/jsm/shaders/LuminosityHighPassShader.js";
+import {FXAAShader} from "three/examples/jsm/shaders/FXAAShader.js";
 
-import {SSAOShader} from "../lib/jsm/shaders/SSAOShader.js";
-import {SSAOPass} from "../lib/jsm/postprocessing/SSAOPass.js";
+import {SSAOShader} from "three/examples/jsm/shaders/SSAOShader.js";
 
-import {SimplexNoise} from "../lib/jsm/SimplexNoise.js";
+import {SimplexNoise} from "three/examples/jsm/math/SimplexNoise.js";
 
 class Environment {
     constructor(renderer, scene, camera) {
@@ -54,7 +55,7 @@ class Environment {
 
             var pixelRatio = renderer.getPixelRatio();
 
-            let copyPass = new ShaderPass(THREE.CopyShader);
+            let copyPass = new ShaderPass(CopyShader);
 
             ssaoPass = new SSAOPass(scene,camera,width,height);
             ssaoPass.minDistance = 0.005;
@@ -95,9 +96,9 @@ class Environment {
             var pmremGenerator = new THREE.PMREMGenerator(renderer);
             pmremGenerator.compileEquirectangularShader();
             new RGBELoader().setDataType(THREE.UnsignedByteType)//            .setPath( '../three.js-dev/examples/textures/equirectangular/' )
-            //            .load( 'royal_esplanade_1k.hdr', 
+            //            .load( 'royal_esplanade_1k.hdr',
             .setPath('')
-            //.load( 'venice_sunset_2k.hdr', 
+            //.load( 'venice_sunset_2k.hdr',
             .load('../assets/san_giuseppe_bridge_4k.hdr',
             function(texture) {
                 var envMap = pmremGenerator.fromEquirectangular(texture).texture;
