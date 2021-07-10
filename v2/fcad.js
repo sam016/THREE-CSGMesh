@@ -1,5 +1,5 @@
 import*as THREE from "../lib/three.module.js";
-import CSG from "../three-csg.js";
+import CSG from "../src/three-csg.js";
 import {GLTFLoader} from "../lib/jsm/GLTFLoader.js"
 import {DRACOLoader} from "../lib/jsm/DRACOLoader.js"
 
@@ -202,7 +202,7 @@ class FCAD {
             this.nodes.push(node);
             return node;
         }
-        
+
         this.addNode = addNode;
 
         function nnode(type, args) {
@@ -417,7 +417,7 @@ multiline text.`)
                     /*
                     setInterval(()=>{
                         regen(`${Math.random()}
-${Math.random()}                      
+${Math.random()}
 ${(performance.now() / 1000) | 0}`)
                     }
                     , 2000)
@@ -441,7 +441,7 @@ ${(performance.now() / 1000) | 0}`)
     }
 }
 
-fetch('../csg-lib.js').then(function(response) {
+fetch('../src/csg-lib.js').then(function(response) {
     return response.text().then(function(text) {
         text = text.slice(0, text.lastIndexOf('export'));
         const code = text + `

@@ -2,7 +2,7 @@ import * as THREE from '../lib/three.module.js';
 import {SimplifyModifier} from '../lib/jsm/SimplifyModifier.js';
 //import CanvasRecorder from "./canvas-recorder.js"
 import UI from "./ui.js"
-import CSG from "../three-csg.js";
+import CSG from "../src/three-csg.js";
 import FCAD from "./fcad.js";
 
 document.addEventListener('init', (e)=>{
@@ -126,7 +126,7 @@ document.addEventListener('init', (e)=>{
             (elements.selectedCount > 0) ? elements.forEach((e,i)=>elements.deselect(i)) : elements.forEach((e,i)=>elements.select(i))
     }
     , false);
-    
+
     //CanvasRecorder(renderer.domElement)
     //window.canvasRecorder.style.left = '0px'
 
