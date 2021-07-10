@@ -1,0 +1,16 @@
+{
+  "name": "THREE-CSGMesh",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "sam016/THREE-CSGMesh",
+  "author": "manthrax, sam016 <devmaster@sam016.com>",
+  "license": "MIT",
+  "scripts": {
+    "demo": "webpack serve --config ./webpack.demo.js --progress"
+  },
+  "devDependencies": {
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
